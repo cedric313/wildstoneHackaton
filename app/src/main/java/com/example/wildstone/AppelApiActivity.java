@@ -21,14 +21,10 @@ public class AppelApiActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_appel_api);
-
-        // Crée une file d'attente pour les requêtes vers l'API
         RequestQueue requestQueue = Volley.newRequestQueue(this);
 
-        // TODO : URL de la requête vers l'API
         String url = "https://akabab.github.io/superhero-api/api/all.json";
 
-        // Création de la requête vers l'API, ajout des écouteurs pour les réponses et erreurs possibles
         JsonArrayRequest jsonObjectRequest = new JsonArrayRequest(
                 Request.Method.GET, url, null,
                 new Response.Listener<JSONArray>() {
@@ -47,7 +43,6 @@ public class AppelApiActivity extends AppCompatActivity {
                                 JSONObject appearance = (JSONObject) hero.get("appearance");
                                 String race = (String) appearance.getString("race");
                                 JSONArray height = appearance.getJSONArray("appearance");
-
                             }
 
                         } catch (JSONException e) {
@@ -60,13 +55,11 @@ public class AppelApiActivity extends AppCompatActivity {
 
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        // Afficher l'erreur
                         Log.d("VOLLEY_ERROR", "onErrorResponse: " + error.getMessage());
                     }
                 }
         );
 
-        // On ajoute la requête à la file d'attente
         requestQueue.add(jsonObjectRequest);
     }
 }

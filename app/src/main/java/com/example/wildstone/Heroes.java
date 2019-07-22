@@ -6,21 +6,15 @@ public class Heroes {
     private String durability;
     private String power;
     private String race;
-    private String height;
-    private String weight;
     private String images;
 
     public Heroes() {
     }
 
-    public Heroes(String name, String durability, String power, String race, String height, String weight, String images) {
+    public Heroes(String name, String durability, String power) {
         this.name = name;
         this.durability = durability;
         this.power = power;
-        this.race = race;
-        this.height = height;
-        this.weight = weight;
-        this.images = images;
     }
 
     public String getName() {
@@ -55,21 +49,6 @@ public class Heroes {
         this.race = race;
     }
 
-    public String getHeight() {
-        return height;
-    }
-
-    public void setHeight(String height) {
-        this.height = height;
-    }
-
-    public String getWeight() {
-        return weight;
-    }
-
-    public void setWeight(String weight) {
-        this.weight = weight;
-    }
 
     public String getImages() {
         return images;
