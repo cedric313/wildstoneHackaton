@@ -1,20 +1,24 @@
 package com.example.wildstone;
 
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+
 public class Heroes {
 
     private String name;
     private String durability;
     private String power;
     private String race;
-    private String images;
+    private Bitmap images;
 
     public Heroes() {
     }
 
-    public Heroes(String name, String durability, String power) {
+    public Heroes(String name, String durability, String power,Bitmap images) {
         this.name = name;
         this.durability = durability;
         this.power = power;
+        this.images = images;
     }
 
     public String getName() {
@@ -50,11 +54,11 @@ public class Heroes {
     }
 
 
-    public String getImages() {
+    public Bitmap getImages() {
         return images;
     }
 
-    public void setImages(String images) {
+    public void setImages(Bitmap images) {
         this.images = images;
     }
 }

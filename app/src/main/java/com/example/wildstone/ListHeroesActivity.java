@@ -1,5 +1,8 @@
 package com.example.wildstone;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,6 +15,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -59,9 +63,10 @@ public class ListHeroesActivity extends AppCompatActivity {
                                     cm = (String) height.get(0);
                                 }
                                 JSONObject image = (JSONObject) hero.get("images");
-                                String imageHero = image.getString("sm");
+                                String StringimageHero = image.getString("sm");
+                                Bitmap myBitmap = BitmapFactory.decodeFile(StringimageHero);
 
-                                heroesModels.add(new Heroes(name,String.valueOf(durability), String.valueOf(power)));
+                                heroesModels.add(new Heroes(name,String.valueOf(durability), String.valueOf(power),myBitmap));
 
                             }
 
