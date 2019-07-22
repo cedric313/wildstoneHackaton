@@ -8,9 +8,12 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
@@ -27,13 +30,24 @@ public class MainActivity extends AppCompatActivity {
         String url = "https://akabab.github.io/superhero-api/api/all.json";
 
         // Création de la requête vers l'API, ajout des écouteurs pour les réponses et erreurs possibles
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+        JsonArrayRequest jsonObjectRequest = new JsonArrayRequest(
                 Request.Method.GET, url, null,
-                new Response.Listener<JSONObject>() {
+                new Response.Listener<JSONArray>() {
 
                     @Override
-                    public void onResponse(JSONObject response) {
+                    public void onResponse(JSONArray response) {
                         // TODO : traiter la réponse
+                        JSONObject list = null;
+                        try {
+                            for(int i = 0 ; i < list.length() ; i++) {
+                                list = response.getJSONObject(i);
+
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
                     }
                 },
                 new Response.ErrorListener() {
