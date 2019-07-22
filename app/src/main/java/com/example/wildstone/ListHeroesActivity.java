@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -75,7 +76,7 @@ public class ListHeroesActivity extends AppCompatActivity {
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-                        CardAdapter adapter = new CardAdapter(heroesModels);
+                        final CardAdapter adapter = new CardAdapter(heroesModels);
                         listHeroes.setAdapter(adapter);
 
                     }
