@@ -4,6 +4,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -14,16 +26,64 @@ public class ListHeroesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_heroes_activity);
 
-        RecyclerView listHeroes = findViewById(R.id.rvCards);
-
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        final RecyclerView listHeroes = findViewById(R.id.rvCards);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getParent(), LinearLayoutManager.HORIZONTAL, false);
         listHeroes.setLayoutManager(layoutManager);
 
-        final ArrayList<Heroes> heroesModels = new ArrayList<>();
-        heroesModels.add(new Heroes("Paris", "Tokyo", "Eric Cartman", "","","",""));
-        heroesModels.add(new Heroes("Paris", "Tokyo", "Stan Marsh", "","","",""));
 
-        final CardAdapter adapter = new CardAdapter(heroesModels);
-        listHeroes.setAdapter(adapter);
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+
+        String url = "https://akabab.github.io/superhero-api/api/all.json";
+
+        JsonArrayRequest jsonObjectRequest = new JsonArrayRequest(
+                Request.Method.GET, url, null,
+                new Response.Listener<JSONArray>() {
+
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        final ArrayList<Heroes> heroesModels = new ArrayList<>();
+
+                        try {
+                            JSONArray listHero = response;
+                            for(int i = 0 ; i < listHero.length() ; i++) {
+                                JSONObject hero = (JSONObject) listHero.get(i);
+                                String name = hero.getString("name");
+                                JSONObject position = (JSONObject) hero.get("powerstats");
+                                int power = (int) position.getInt("power");
+                                int durability = (int) position.getInt("durability");
+                                JSONObject appearance = (JSONObject) hero.get("appearance");
+                                String race = (String) appearance.getString("race");
+                                JSONArray height = appearance.getJSONArray("height");
+                                String cm = "";
+                                if(height.get(0) != null){
+                                    cm = (String) height.get(0);
+                                }
+                                JSONObject image = (JSONObject) hero.get("images");
+                                String imageHero = image.getString("sm");
+
+                                heroesModels.add(new Heroes(name,String.valueOf(durability), String.valueOf(power)));
+
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        CardAdapter adapter = new CardAdapter(heroesModels);
+                        listHeroes.setAdapter(adapter);
+
+                    }
+                },
+                new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.d("VOLLEY_ERROR", "onErrorResponse: " + error.getMessage());
+                    }
+                }
+        );
+
+        requestQueue.add(jsonObjectRequest);
+
     }
+
 }
