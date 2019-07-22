@@ -9,12 +9,12 @@ public class Heroes {
     private String durability;
     private String power;
     private String race;
-    private Bitmap images;
+    private String images;
 
     public Heroes() {
     }
 
-    public Heroes(String name, String durability, String power,Bitmap images) {
+    public Heroes(String name, String durability, String power,String images) {
         this.name = name;
         this.durability = durability;
         this.power = power;
@@ -54,11 +54,11 @@ public class Heroes {
     }
 
 
-    public Bitmap getImages() {
+    public String getImages() {
         return images;
     }
 
-    public void setImages(Bitmap images) {
+    public void setImages(String images) {
         this.images = images;
     }
 }
