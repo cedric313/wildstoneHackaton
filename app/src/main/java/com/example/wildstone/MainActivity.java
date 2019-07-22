@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog,
                                                 int which) {
                                 Toast.makeText(getApplicationContext(),"T'aurais jamais du accepter morveux... SEE U IN HELL",Toast.LENGTH_LONG).show();
-                                Intent intent = new Intent(MainActivity.this, PickCard.class);
+                                Intent intent = new Intent(MainActivity.this, ListHeroesActivity.class);
                                 startActivity(intent);
                             }
                         });
