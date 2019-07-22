@@ -33,12 +33,14 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull CardAdapter.ViewHolder holder, int position) {
+
         Heroes heroes = mHeroes.get(position);
         holder.tvName.setText(heroes.getName());
         holder.tvDurability.setText(heroes.getDurability());
         holder.tvPower.setText(heroes.getPower());
-        holder.ivImages.setImageBitmap(heroes.getImages());
-
+        Glide.with(holder.itemView)
+                .load(heroes.getImages())
+                .into(holder.ivImages);
     }
 
     @Override

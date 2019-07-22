@@ -63,10 +63,12 @@ public class ListHeroesActivity extends AppCompatActivity {
                                     cm = (String) height.get(0);
                                 }
                                 JSONObject image = (JSONObject) hero.get("images");
-                                String StringimageHero = image.getString("sm");
-                                Bitmap myBitmap = BitmapFactory.decodeFile(StringimageHero);
+                                String StringimageHero = "";
+                                if(image.getString("sm") != null){
+                                    StringimageHero = image.getString("sm");
+                                }
 
-                                heroesModels.add(new Heroes(name,String.valueOf(durability), String.valueOf(power),myBitmap));
+                                heroesModels.add(new Heroes(name,String.valueOf(durability), String.valueOf(power),StringimageHero));
 
                             }
 
