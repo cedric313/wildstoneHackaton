@@ -1,5 +1,7 @@
 package com.example.wildstone;
 
+import com.example.wildstone.models.Heroes;
+
 import java.util.ArrayList;
 
 public class UserSingleton {

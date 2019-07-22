@@ -1,4 +1,4 @@
-package com.example.wildstone;
+package com.example.wildstone.models;
 
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
