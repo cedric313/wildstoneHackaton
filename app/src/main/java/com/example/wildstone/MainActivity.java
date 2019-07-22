@@ -3,6 +3,7 @@ package com.example.wildstone;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -16,6 +17,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -23,44 +26,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Crée une file d'attente pour les requêtes vers l'API
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
 
-        // TODO : URL de la requête vers l'API
-        String url = "https://akabab.github.io/superhero-api/api/all.json";
-
-        // Création de la requête vers l'API, ajout des écouteurs pour les réponses et erreurs possibles
-        JsonArrayRequest jsonObjectRequest = new JsonArrayRequest(
-                Request.Method.GET, url, null,
-                new Response.Listener<JSONArray>() {
-
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        // TODO : traiter la réponse
-                        JSONObject list = null;
-                        try {
-                            for(int i = 0 ; i < list.length() ; i++) {
-                                list = response.getJSONObject(i);
-
-                            }
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-
-                    }
-                },
-                new Response.ErrorListener() {
-
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        // Afficher l'erreur
-                        Log.d("VOLLEY_ERROR", "onErrorResponse: " + error.getMessage());
-                    }
-                }
-        );
-
-        // On ajoute la requête à la file d'attente
-        requestQueue.add(jsonObjectRequest);
     }
 }
