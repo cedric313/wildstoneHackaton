@@ -41,6 +41,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
         Glide.with(holder.itemView)
                 .load(heroes.getImages())
                 .into(holder.ivImages);
+
     }
 
     @Override
@@ -59,4 +60,5 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
             this.ivImages = v.findViewById(R.id.ivImages);
         }
     }
+
 }
