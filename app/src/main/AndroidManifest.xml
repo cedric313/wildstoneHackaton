@@ -12,8 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".AppelApiActivity"></activity>
-        <activity android:name=".ListHeroesActivity">
-        </activity>
+        <activity android:name=".ListHeroesActivity"></activity>
+        <activity android:name=".BattleField"></activity>
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
