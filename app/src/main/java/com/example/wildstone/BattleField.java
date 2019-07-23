@@ -4,7 +4,9 @@ package com.example.wildstone;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -20,7 +22,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
 
 public class BattleField extends AppCompatActivity {
@@ -30,35 +31,8 @@ public class BattleField extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.battle_field_activity);
 
-        ArrayList<Heroes> heroesArrayList = new ArrayList<>();
 
-        UserSingleton user = UserSingleton.getUserInstance();
-
-        for (Heroes hero: user.getHeroes()){
-
-            heroesArrayList.add(hero);
-
-        }
-        ImageButton card1 = findViewById(R.id.imageButton);
-        Glide.with(BattleField.this)
-                .load(heroesArrayList.get(0).getImages())
-                .into(card1);
-        ImageButton card2 = findViewById(R.id.imageButton2);
-        Glide.with(BattleField.this)
-                .load(heroesArrayList.get(1).getImages())
-                .into(card2);
-        ImageButton card4 = findViewById(R.id.imageButton4);
-        Glide.with(BattleField.this)
-                .load(heroesArrayList.get(2).getImages())
-                .into(card4);
-        ImageButton card6 = findViewById(R.id.imageButton6);
-        Glide.with(BattleField.this)
-                .load(heroesArrayList.get(3).getImages())
-                .into(card6);
-        ImageButton card3 = findViewById(R.id.imageButton3);
-        Glide.with(BattleField.this)
-                .load(heroesArrayList.get(4).getImages())
-                .into(card3);
+        final ImageView playR = findViewById(R.id.imageView3);
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
 
@@ -97,24 +71,23 @@ public class BattleField extends AppCompatActivity {
 
                             }
 
-
-
                             Random r = new Random();
-                            int index = r.nextInt((500 - 1) + 1) + 0;
-                            ImageButton card8 = findViewById(R.id.imageButton8);
+                            final int index = r.nextInt((500 - 1) + 1) + 0;
+                            final ImageButton card8 = findViewById(R.id.imageButton8);
                             Glide.with(BattleField.this)
                                     .load(heroBot.get(index).getImages())
                                     .into(card8);
 
+
                             Random r1 = new Random();
-                            int index1 = r1.nextInt((500 - 1) + 1) + 0;
+                            final int index1 = r1.nextInt((500 - 1) + 1) + 0;
                             ImageButton card9 = findViewById(R.id.imageButton9);
                             Glide.with(BattleField.this)
                                     .load(heroBot.get(index1).getImages())
                                     .into(card9);
 
                             Random r2 = new Random();
-                            int index2 = r2.nextInt((500 - 1) + 1) + 0;
+                            final int index2 = r2.nextInt((500 - 1) + 1) + 0;
                             ImageButton card10 = findViewById(R.id.imageButton10);
                             Glide.with(BattleField.this)
                                     .load(heroBot.get(index2).getImages())
@@ -133,6 +106,63 @@ public class BattleField extends AppCompatActivity {
                             Glide.with(BattleField.this)
                                     .load(heroBot.get(index4).getImages())
                                     .into(card7);
+
+                            final ArrayList<Heroes> heroesArrayList = new ArrayList<>();
+
+                            UserSingleton user = UserSingleton.getUserInstance();
+
+                            for (Heroes hero: user.getHeroes()){
+
+                                heroesArrayList.add(hero);
+
+                            }
+                            ImageButton card1 = findViewById(R.id.imageButton);
+                            Glide.with(BattleField.this)
+                                    .load(heroesArrayList.get(0).getImages())
+                                    .into(card1);
+                            card1.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    ImageView playerUs = findViewById(R.id.imageView2);
+                                    Glide.with(BattleField.this)
+                                            .load(heroesArrayList.get(0).getImages())
+                                            .into(playerUs);
+                                    Glide.with(BattleField.this)
+                                            .load(heroBot.get(index).getImages())
+                                            .into(playR);
+
+
+                                }
+                            });
+                            ImageButton card2 = findViewById(R.id.imageButton2);
+                            Glide.with(BattleField.this)
+                                    .load(heroesArrayList.get(1).getImages())
+                                    .into(card2);
+                            card2.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    ImageView playerUs = findViewById(R.id.imageView2);
+                                    Glide.with(BattleField.this)
+                                            .load(heroesArrayList.get(1).getImages())
+                                            .into(playerUs);
+                                    Glide.with(BattleField.this)
+                                            .load(heroBot.get(index2).getImages())
+                                            .into(playR);
+                                }
+                            });
+                            ImageButton card4 = findViewById(R.id.imageButton4);
+                            Glide.with(BattleField.this)
+                                    .load(heroesArrayList.get(2).getImages())
+                                    .into(card4);
+                            ImageButton card6 = findViewById(R.id.imageButton6);
+                            Glide.with(BattleField.this)
+                                    .load(heroesArrayList.get(3).getImages())
+                                    .into(card6);
+                            ImageButton card3 = findViewById(R.id.imageButton3);
+                            Glide.with(BattleField.this)
+                                    .load(heroesArrayList.get(4).getImages())
+                                    .into(card3);
+
 
                         } catch (JSONException e) {
                             e.printStackTrace();
