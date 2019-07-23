@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -17,7 +18,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
-import com.bumptech.glide.Glide;
 import com.example.wildstone.models.Heroes;
 
 import org.json.JSONArray;
@@ -71,7 +71,7 @@ public class ListHeroesActivity extends AppCompatActivity {
                                     StringimageHero = image.getString("sm");
                                 }
 
-                                heroesModels.add(new Heroes(name,String.valueOf(durability), String.valueOf(power),StringimageHero));
+                                heroesModels.add(new Heroes(name,durability, power,StringimageHero));
 
                             }
 

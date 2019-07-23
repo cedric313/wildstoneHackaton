@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -67,7 +68,7 @@ public class BattleField extends AppCompatActivity {
                                     StringimageHero = image.getString("sm");
                                 }
 
-                                heroBot.add(new Heroes(name, String.valueOf(durability), String.valueOf(power), StringimageHero));
+                                heroBot.add(new Heroes(name,durability, power, StringimageHero));
 
                             }
 
@@ -130,6 +131,17 @@ public class BattleField extends AppCompatActivity {
                                     Glide.with(BattleField.this)
                                             .load(heroBot.get(index).getImages())
                                             .into(playR);
+                                    while (!heroesArrayList.get(0).isKo() && !heroBot.get(index).isKo()) {
+                                        heroBot.get(index).takeHit(heroesArrayList.get(0).getPower());
+                                        if (heroBot.get(index).getDurability() > 0) {
+                                            heroesArrayList.get(0).takeHit(heroBot.get(index).getPower());
+                                        }
+                                        if(heroBot.get(index).getDurability() < 0){
+                                            Toast.makeText(BattleField.this, "PLAYER BOT IS KO", Toast.LENGTH_SHORT).show();
+                                        }
+                                        else{
+                                            Toast.makeText(BattleField.this, "YOU ARE KO", Toast.LENGTH_SHORT).show();                                        }
+                                    }
 
 
                                 }
@@ -148,6 +160,18 @@ public class BattleField extends AppCompatActivity {
                                     Glide.with(BattleField.this)
                                             .load(heroBot.get(index2).getImages())
                                             .into(playR);
+                                    while (!heroesArrayList.get(1).isKo() && !heroBot.get(index2).isKo()) {
+                                        heroBot.get(index2).takeHit(heroesArrayList.get(1).getPower());
+                                        if (heroBot.get(index2).getDurability() > 0) {
+                                            heroesArrayList.get(1).takeHit(heroBot.get(index2).getPower());
+                                        }
+                                        if(heroBot.get(index2).getDurability() < 0){
+                                            Toast.makeText(BattleField.this, "PLAYER BOT IS KO", Toast.LENGTH_SHORT).show();
+                                        }
+                                        else{
+                                            Toast.makeText(BattleField.this, "YOU ARE KO", Toast.LENGTH_SHORT).show();                                        }
+                                    }
+
                                 }
                             });
                             ImageButton card4 = findViewById(R.id.imageButton4);
@@ -164,6 +188,17 @@ public class BattleField extends AppCompatActivity {
                                     Glide.with(BattleField.this)
                                             .load(heroBot.get(index3).getImages())
                                             .into(playR);
+                                    while (!heroesArrayList.get(2).isKo() && !heroBot.get(index3).isKo()) {
+                                        heroBot.get(index3).takeHit(heroesArrayList.get(2).getPower());
+                                        if (heroBot.get(index3).getDurability() > 0) {
+                                            heroesArrayList.get(2).takeHit(heroBot.get(index3).getPower());
+                                        }
+                                        if(heroBot.get(index3).getDurability() < 0){
+                                            Toast.makeText(BattleField.this, "PLAYER BOT IS KO", Toast.LENGTH_SHORT).show();
+                                        }
+                                        else{
+                                            Toast.makeText(BattleField.this, "YOU ARE KO", Toast.LENGTH_SHORT).show();                                        }
+                                    }
                                 }
                             });
                             ImageButton card6 = findViewById(R.id.imageButton6);
@@ -180,6 +215,17 @@ public class BattleField extends AppCompatActivity {
                                     Glide.with(BattleField.this)
                                             .load(heroBot.get(index1).getImages())
                                             .into(playR);
+                                    while (!heroesArrayList.get(3).isKo() && !heroBot.get(index1).isKo()) {
+                                        heroBot.get(index1).takeHit(heroesArrayList.get(3).getPower());
+                                        if (heroBot.get(index1).getDurability() > 0) {
+                                            heroesArrayList.get(3).takeHit(heroBot.get(index1).getPower());
+                                        }
+                                        if(heroBot.get(index1).getDurability() < 0){
+                                            Toast.makeText(BattleField.this, "PLAYER BOT IS KO", Toast.LENGTH_SHORT).show();
+                                        }
+                                        else{
+                                            Toast.makeText(BattleField.this, "YOU ARE KO", Toast.LENGTH_SHORT).show();                                        }
+                                    }
                                 }
                             });
                             ImageButton card3 = findViewById(R.id.imageButton3);
@@ -196,6 +242,17 @@ public class BattleField extends AppCompatActivity {
                                     Glide.with(BattleField.this)
                                             .load(heroBot.get(index4).getImages())
                                             .into(playR);
+                                    while (!heroesArrayList.get(4).isKo() && !heroBot.get(index4).isKo()) {
+                                        heroBot.get(index4).takeHit(heroesArrayList.get(4).getPower());
+                                        if (heroBot.get(index4).getDurability() > 0) {
+                                            heroesArrayList.get(4).takeHit(heroBot.get(index4).getPower());
+                                        }
+                                        if(heroBot.get(index4).getDurability() < 0){
+                                            Toast.makeText(BattleField.this, "PLAYER BOT IS KO", Toast.LENGTH_SHORT).show();
+                                        }
+                                        else{
+                                            Toast.makeText(BattleField.this, "YOU ARE KO", Toast.LENGTH_SHORT).show();                                        }
+                                    }
                                 }
                             }
                             );

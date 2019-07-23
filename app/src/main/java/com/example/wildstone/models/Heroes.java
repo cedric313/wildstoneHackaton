@@ -6,15 +6,15 @@ import android.graphics.drawable.Drawable;
 public class Heroes {
 
     private String name;
-    private String durability;
-    private String power;
+    private int durability;
+    private int power;
     private String race;
     private String images;
 
     public Heroes() {
     }
 
-    public Heroes(String name, String durability, String power,String images) {
+    public Heroes(String name, int durability, int power,String images) {
         this.name = name;
         this.durability = durability;
         this.power = power;
@@ -29,19 +29,19 @@ public class Heroes {
         this.name = name;
     }
 
-    public String getDurability() {
+    public int getDurability() {
         return durability;
     }
 
-    public void setDurability(String durability) {
+    public void setDurability(int durability) {
         this.durability = durability;
     }
 
-    public String getPower() {
+    public int getPower() {
         return power;
     }
 
-    public void setPower(String power) {
+    public void setPower(int power) {
         this.power = power;
     }
 
@@ -61,4 +61,16 @@ public class Heroes {
     public void setImages(String images) {
         this.images = images;
     }
+
+    public void takeHit(int hit) {
+        this.durability =  this.durability - hit;
+        System.out.println(this.name + " has " + this.durability + " points remaining. ");
+        System.out.println (this.isKo() ? this.name + " is KO ": this.name + " is still alive");
+
+    }
+
+    public boolean isKo() {
+        return this.durability <= 0;
+    }
+
 }
