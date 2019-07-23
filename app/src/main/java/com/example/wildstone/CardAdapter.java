@@ -50,19 +50,19 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
             @Override
             public void onClick(View v) {
                 heroesArrayList.add(heroes);
+                Toast.makeText(v.getContext(), "Héro ajouté !", Toast.LENGTH_SHORT).show();
                 if(heroesArrayList.size() >= 5){
                     UserSingleton userSingleton = UserSingleton.getUserInstance();
                     userSingleton.setHeroes(heroesArrayList);
+
                     Toast.makeText(v.getContext(), "Votre deck est prét!", Toast.LENGTH_LONG).show();
                     v.getContext().startActivity(new Intent(v.getContext(), BattleField.class));
 
-                }
 
+                }
             }
         });
-
     }
-
     @Override
     public int getItemCount() {
         return mHeroes.size();
