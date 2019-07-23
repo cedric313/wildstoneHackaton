@@ -71,7 +71,7 @@ public class ListHeroesActivity extends AppCompatActivity {
                                     StringimageHero = image.getString("sm");
                                 }
 
-                                heroesModels.add(new Heroes(name,String.valueOf(durability), String.valueOf(power),StringimageHero));
+                                heroesModels.add(new Heroes(name,durability, power,StringimageHero));
 
                             }
 

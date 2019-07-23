@@ -41,8 +41,8 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
 
         final Heroes heroes = mHeroes.get(position);
         holder.tvName.setText(heroes.getName());
-        holder.tvDurability.setText(heroes.getDurability());
-        holder.tvPower.setText(heroes.getPower());
+        holder.tvDurability.setText(String.valueOf(heroes.getDurability()));
+        holder.tvPower.setText(String.valueOf(heroes.getPower()));
         Glide.with(holder.itemView)
                 .load(heroes.getImages())
                 .into(holder.ivImages);
