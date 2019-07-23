@@ -2,6 +2,7 @@ package com.example.wildstone;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -70,16 +71,18 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
     }
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        final TextView tvName, tvDurability, tvPower;
+        final TextView tvName,tvChoose, tvDurability, tvPower;
         final ImageView ivImages;
         final Button btChoose;
         public ViewHolder(View v) {
             super(v);
             this.tvName = v.findViewById(R.id.tvName);
+            this.tvChoose = v.findViewById(R.id.tvChoisir5cartes);
             this.tvDurability = v.findViewById(R.id.tvDurability);
             this.tvPower = v.findViewById(R.id.tvPower);
             this.ivImages = v.findViewById(R.id.ivImages);
             this.btChoose = v.findViewById(R.id.btChoose);
+
         }
     }
 

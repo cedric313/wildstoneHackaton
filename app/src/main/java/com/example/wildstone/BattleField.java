@@ -1,6 +1,7 @@
 package com.example.wildstone;
 
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -140,6 +141,7 @@ public class BattleField extends AppCompatActivity {
                                             Toast.makeText(BattleField.this, "PLAYER BOT IS KO", Toast.LENGTH_SHORT).show();
                                         }
                                         else{
+
                                             Toast.makeText(BattleField.this, "YOU ARE KO", Toast.LENGTH_SHORT).show();                                        }
                                     }
 
@@ -166,9 +168,11 @@ public class BattleField extends AppCompatActivity {
                                             heroesArrayList.get(1).takeHit(heroBot.get(index2).getPower());
                                         }
                                         if(heroBot.get(index2).getDurability() < 0){
+
                                             Toast.makeText(BattleField.this, "PLAYER BOT IS KO", Toast.LENGTH_SHORT).show();
                                         }
                                         else{
+
                                             Toast.makeText(BattleField.this, "YOU ARE KO", Toast.LENGTH_SHORT).show();                                        }
                                     }
 

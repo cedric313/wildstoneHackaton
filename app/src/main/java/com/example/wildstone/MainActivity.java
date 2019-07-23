@@ -3,6 +3,7 @@ package com.example.wildstone;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -54,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
                                                 int which) {
                                 Toast.makeText(getApplicationContext(),"T'aurais jamais du accepter morveux... SEE U IN HELL",Toast.LENGTH_LONG).show();
                                 Intent intent = new Intent(MainActivity.this, ListHeroesActivity.class);
+
                                 startActivity(intent);
                             }
                         });
