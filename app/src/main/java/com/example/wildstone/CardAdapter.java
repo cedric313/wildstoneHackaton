@@ -1,5 +1,7 @@
 package com.example.wildstone;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -19,7 +21,7 @@ import java.util.ArrayList;
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
     private ArrayList<Heroes> mHeroes;
     private ArrayList<Heroes> heroesArrayList = new ArrayList<>();
-
+    Context context;
     public CardAdapter(ArrayList<Heroes> heroes) {
         mHeroes = heroes;
     }
@@ -52,6 +54,8 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
                     UserSingleton userSingleton = UserSingleton.getUserInstance();
                     userSingleton.setHeroes(heroesArrayList);
                     Toast.makeText(v.getContext(), "Votre deck est prét!", Toast.LENGTH_LONG).show();
+                    v.getContext().startActivity(new Intent(v.getContext(), BattleField.class));
+
                 }
 
             }
