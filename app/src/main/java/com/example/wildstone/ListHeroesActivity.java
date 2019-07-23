@@ -80,11 +80,6 @@ public class ListHeroesActivity extends AppCompatActivity {
                         }
                         final CardAdapter adapter = new CardAdapter(heroesModels);
                         listHeroes.setAdapter(adapter);
-                        UserSingleton userSingleton = UserSingleton.getUserInstance();
-                        if(userSingleton.getHeroes().size() == 5){
-                            //Intent intent = new Intent(ListHeroesActivity.this, BattleField.class);
-                            //startActivity(intent);
-                        }
                     }
                 },
                 new Response.ErrorListener() {
