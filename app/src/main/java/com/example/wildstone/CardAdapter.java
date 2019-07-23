@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.wildstone.models.Heroes;
 
 import java.util.ArrayList;
@@ -44,7 +45,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
         holder.tvDurability.setText(String.valueOf(heroes.getDurability()));
         holder.tvPower.setText(String.valueOf(heroes.getPower()));
         Glide.with(holder.itemView)
-                .load(heroes.getImages())
+                .load(heroes.getImages()).apply(RequestOptions.circleCropTransform())
                 .into(holder.ivImages);
         holder.btChoose.setOnClickListener(new View.OnClickListener() {
             @Override
