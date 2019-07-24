@@ -2,6 +2,7 @@ package com.example.wildstone;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.wildstone.models.Heroes;
 
 import java.util.ArrayList;
@@ -44,7 +46,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
         holder.tvDurability.setText(String.valueOf(heroes.getDurability()));
         holder.tvPower.setText(String.valueOf(heroes.getPower()));
         Glide.with(holder.itemView)
-                .load(heroes.getImages())
+                .load(heroes.getImages()).apply(RequestOptions.circleCropTransform())
                 .into(holder.ivImages);
         holder.btChoose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,16 +71,19 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
     }
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        final TextView tvName, tvDurability, tvPower;
+        final TextView tvName,tvChoose, tvDurability, tvPower;
         final ImageView ivImages;
         final Button btChoose;
+
         public ViewHolder(View v) {
             super(v);
             this.tvName = v.findViewById(R.id.tvName);
+            this.tvChoose = v.findViewById(R.id.tvChoisir5cartes);
             this.tvDurability = v.findViewById(R.id.tvDurability);
             this.tvPower = v.findViewById(R.id.tvPower);
             this.ivImages = v.findViewById(R.id.ivImages);
             this.btChoose = v.findViewById(R.id.btChoose);
+
         }
     }
 
