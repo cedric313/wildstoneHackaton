@@ -32,22 +32,28 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
         Button button = findViewById(R.id.btPlay);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 switch (v.getId()){
                     case R.id.btPlay:
+                        MediaPlayer mp = MediaPlayer.create(MainActivity.this , R.raw.sword);
+                        mp.start();
                         alertDialog();
+
                         break;
                 }
             }
 
             private void alertDialog() {
                 AlertDialog.Builder dialog=new AlertDialog.Builder(MainActivity.this);
-                dialog.setMessage("Salut les tocard!! Dans ce jeu vous allez devoir choisir 5 cartes" +
-                        " et affronter un bot qui va tout faire pour vous détruire...SOIS FORT.. ");
-                dialog.setTitle("Lis ca petite merde !!");
+                dialog.setMessage("Dans ce jeu tu devras  choisir 5 cartes" +
+                        " et affronter un bot qui va tout faire pour te détruire...SOIS FORT.. ");
+                dialog.setTitle("Lis ça jeune padawan !!");
                 dialog.setNegativeButton("J'ai la trouille je m'en vais!!", null);
                 dialog.setPositiveButton("C'est parti mon kiki !!",
                         new DialogInterface.OnClickListener() {

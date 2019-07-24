@@ -74,6 +74,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
         final TextView tvName,tvChoose, tvDurability, tvPower;
         final ImageView ivImages;
         final Button btChoose;
+
         public ViewHolder(View v) {
             super(v);
             this.tvName = v.findViewById(R.id.tvName);

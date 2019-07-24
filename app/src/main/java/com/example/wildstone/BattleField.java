@@ -1,6 +1,7 @@
 package com.example.wildstone;
 
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -27,12 +29,14 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class BattleField extends AppCompatActivity {
+    private int knock = 0;
+    private int[] userPoint = new int[5];
+    private int[] botPoint = new int[5];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.battle_field_activity);
-
 
         final ImageView playR = findViewById(R.id.imageView3);
 
@@ -118,6 +122,7 @@ public class BattleField extends AppCompatActivity {
                                 heroesArrayList.add(hero);
 
                             }
+
                             ImageButton card1 = findViewById(R.id.imageButton);
                             Glide.with(BattleField.this)
                                     .load(heroesArrayList.get(0).getImages())
@@ -132,19 +137,35 @@ public class BattleField extends AppCompatActivity {
                                     Glide.with(BattleField.this)
                                             .load(heroBot.get(index).getImages())
                                             .into(playR);
+
                                     while (!heroesArrayList.get(0).isKo() && !heroBot.get(index).isKo()) {
                                         heroBot.get(index).takeHit(heroesArrayList.get(0).getPower());
                                         if (heroBot.get(index).getDurability() > 0) {
                                             heroesArrayList.get(0).takeHit(heroBot.get(index).getPower());
                                         }
                                         if(heroBot.get(index).getDurability() < 0){
-                                            Toast.makeText(BattleField.this, "PLAYER BOT IS KO", Toast.LENGTH_SHORT).show();
+                                            userPoint[0] = 1;
+                                            knock += 1;
+                                            MediaPlayer mp = MediaPlayer.create(getApplicationContext(),R.raw.attack);
+
+                                            mp.start();
+                                            TextView tvIsKo = findViewById(R.id.tvIsKo);
+                                            tvIsKo.setText("player bot is ko");
+                                            tvIsKo.setVisibility(View.VISIBLE);
+
                                         }
                                         else{
+                                            botPoint[0] = 1;
+                                            MediaPlayer mp1 = MediaPlayer.create(getApplicationContext(),R.raw.punch);
+                                            mp1.start();
+                                            knock += 1;
+                                            TextView tvIsKo = findViewById(R.id.tvIsKo);
+                                            tvIsKo.setText("You are Ko");
+                                            tvIsKo.setVisibility(View.VISIBLE);
 
-                                            Toast.makeText(BattleField.this, "YOU ARE KO", Toast.LENGTH_SHORT).show();                                        }
+                                        }
                                     }
-
+                                    checkFinish();
 
                                 }
                             });
@@ -168,14 +189,29 @@ public class BattleField extends AppCompatActivity {
                                             heroesArrayList.get(1).takeHit(heroBot.get(index2).getPower());
                                         }
                                         if(heroBot.get(index2).getDurability() < 0){
+                                            userPoint[1] = 1;
+                                            knock += 1;
+                                            MediaPlayer mp2 = MediaPlayer.create(getApplicationContext(),R.raw.attack);
 
-                                            Toast.makeText(BattleField.this, "PLAYER BOT IS KO", Toast.LENGTH_SHORT).show();
+                                            mp2.start();
+                                            TextView tvIsKo = findViewById(R.id.tvIsKo);
+                                            tvIsKo.setText("player bot is ko");
+                                            tvIsKo.setVisibility(View.VISIBLE);
+
+
                                         }
                                         else{
+                                            botPoint[1] = 1;
+                                            MediaPlayer mp3 = MediaPlayer.create(getApplicationContext(),R.raw.punch);
+                                            mp3.start();
+                                            knock += 1;
+                                            TextView tvIsKo = findViewById(R.id.tvIsKo);
+                                            tvIsKo.setText("You are Ko");
+                                            tvIsKo.setVisibility(View.VISIBLE);
 
-                                            Toast.makeText(BattleField.this, "YOU ARE KO", Toast.LENGTH_SHORT).show();                                        }
+                                            }
                                     }
-
+                                    checkFinish();
                                 }
                             });
                             ImageButton card4 = findViewById(R.id.imageButton4);
@@ -198,11 +234,30 @@ public class BattleField extends AppCompatActivity {
                                             heroesArrayList.get(2).takeHit(heroBot.get(index3).getPower());
                                         }
                                         if(heroBot.get(index3).getDurability() < 0){
-                                            Toast.makeText(BattleField.this, "PLAYER BOT IS KO", Toast.LENGTH_SHORT).show();
+                                            userPoint[2] = 1;
+                                            knock += 1;
+                                            MediaPlayer mp4 = MediaPlayer.create(getApplicationContext(),R.raw.attack);
+
+                                            mp4.start();
+                                            TextView tvIsKo = findViewById(R.id.tvIsKo);
+                                            tvIsKo.setText("player bot is ko");
+                                            tvIsKo.setVisibility(View.VISIBLE);
+
                                         }
                                         else{
-                                            Toast.makeText(BattleField.this, "YOU ARE KO", Toast.LENGTH_SHORT).show();                                        }
+                                            botPoint[2] = 1;
+                                            MediaPlayer mp5 = MediaPlayer.create(getApplicationContext(),R.raw.punch);
+
+                                            mp5.start();
+                                            knock += 1;
+                                            TextView tvIsKo = findViewById(R.id.tvIsKo);
+                                            tvIsKo.setText("You are Ko");
+                                            tvIsKo.setVisibility(View.VISIBLE);
+
+                                           }
+
                                     }
+                                    checkFinish();
                                 }
                             });
                             ImageButton card6 = findViewById(R.id.imageButton6);
@@ -225,11 +280,30 @@ public class BattleField extends AppCompatActivity {
                                             heroesArrayList.get(3).takeHit(heroBot.get(index1).getPower());
                                         }
                                         if(heroBot.get(index1).getDurability() < 0){
-                                            Toast.makeText(BattleField.this, "PLAYER BOT IS KO", Toast.LENGTH_SHORT).show();
+                                            userPoint[3] = 1;
+                                            knock += 1;
+                                            MediaPlayer mp6 = MediaPlayer.create(getApplicationContext(),R.raw.attack);
+
+                                            mp6.start();
+                                            TextView tvIsKo = findViewById(R.id.tvIsKo);
+                                            tvIsKo.setText("player bot is ko");
+                                            tvIsKo.setVisibility(View.VISIBLE);
+
                                         }
                                         else{
-                                            Toast.makeText(BattleField.this, "YOU ARE KO", Toast.LENGTH_SHORT).show();                                        }
+                                            botPoint[3] = 1;
+                                            MediaPlayer mp7 = MediaPlayer.create(getApplicationContext(),R.raw.punch);
+
+                                            mp7.start();
+                                            knock += 1;
+                                            TextView tvIsKo = findViewById(R.id.tvIsKo);
+                                            tvIsKo.setText("You are Ko");
+                                            tvIsKo.setVisibility(View.VISIBLE);
+
+                                             }
+
                                     }
+                                    checkFinish();
                                 }
                             });
                             ImageButton card3 = findViewById(R.id.imageButton3);
@@ -252,15 +326,32 @@ public class BattleField extends AppCompatActivity {
                                             heroesArrayList.get(4).takeHit(heroBot.get(index4).getPower());
                                         }
                                         if(heroBot.get(index4).getDurability() < 0){
-                                            Toast.makeText(BattleField.this, "PLAYER BOT IS KO", Toast.LENGTH_SHORT).show();
+                                            userPoint[4] = 1;
+                                            knock += 1;
+                                            MediaPlayer mp8 = MediaPlayer.create(getApplicationContext(),R.raw.attack);
+                                            mp8.start();
+                                            TextView tvIsKo = findViewById(R.id.tvIsKo);
+                                            tvIsKo.setText("player bot is ko");
+                                            tvIsKo.setVisibility(View.VISIBLE);
+
                                         }
                                         else{
-                                            Toast.makeText(BattleField.this, "YOU ARE KO", Toast.LENGTH_SHORT).show();                                        }
+                                            botPoint[4] = 1;
+                                            MediaPlayer mp9 = MediaPlayer.create(getApplicationContext(),R.raw.punch);
+                                            mp9.start();
+                                            knock += 1;
+                                            TextView tvIsKo = findViewById(R.id.tvIsKo);
+                                            tvIsKo.setText("You are Ko");
+                                            tvIsKo.setVisibility(View.VISIBLE);
+
+                                        }
+
+
                                     }
+                                    checkFinish();
                                 }
                             }
                             );
-
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -281,4 +372,22 @@ public class BattleField extends AppCompatActivity {
 
 
     }
+    public void checkFinish(){
+
+        if (knock == 5 && count(userPoint) >= 3) {
+            Intent intent = new Intent(BattleField.this, RewardActivity.class);
+            startActivity(intent);
+        }
+        if (knock == 5 && count(botPoint) >= 3) {
+            startActivity(new Intent(BattleField.this, RewardLoseActivity.class));
+        }
+    }
+    public int count(int[] array) {
+        int sum = 0;
+        for (int i = 0; i < array.length; i++ ) {
+            sum += array[i];
+        }
+        return sum;
+    }
+
 }
